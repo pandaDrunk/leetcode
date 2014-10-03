@@ -52,3 +52,62 @@ public class Solution {
     }
 }
 //two pass Algorithm
+
+public class Solution {
+    //counting sort
+    public void sortColors1(int[] A) {
+        //if(A==null||A.length==0) return;
+        int r=0;
+        int w=0;
+        int b=0;
+        for(int i=0;i<A.length;i++){
+            switch(A[i]){
+                case 0: r++;
+                        break;
+                case 1: w++;
+                        break;
+                case 2: b++;
+                        break;
+            }
+        }
+        for(int i=0;i<A.length;i++){
+            if(r>0){
+                A[i]=0;
+                r--;
+                continue;
+            }
+            if(w>0){
+                A[i]=1;
+                w--;
+                continue;
+            }
+            A[i]=2;
+        }
+    }
+    //one-pass algorithm
+    public void sortColors(int[] A) {
+        int r=0;
+        int b=A.length-1;
+        int i=0;
+        while(i<=b){
+            if(A[i]==0){
+                swap(A,i,r);
+                r++;
+                i++;
+                continue;
+            }
+            if(A[i]==2){
+                swap(A,i,b);
+                b--;
+                continue;
+            }
+            i++;
+        }
+    }
+    public void swap(int[] A, int b, int c){
+        int tmp;
+        tmp=A[b];
+        A[b]=A[c];
+        A[c]=tmp;
+    }
+}
