@@ -13,6 +13,8 @@ public class Solution {
             return findMin(num, m, mid);
         } else if(num[m]<num[mid]){
             return findMin(num, mid+1, n);
-        } 
+        } else {
+            return findMin(num, m+1, n);//difference with Find Minimum in Rotated Sorted Array, skip duplicates
+        }
     }
 }
